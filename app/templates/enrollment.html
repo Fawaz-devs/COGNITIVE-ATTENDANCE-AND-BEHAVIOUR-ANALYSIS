@@ -1,0 +1,59 @@
+<!-- enrollment.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enrollment</title>
+    <style>
+        #video {
+            display: none; /* Initially hidden */
+            width: 100%;
+            max-width: 600px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Enrollment</h1>
+    <form id="enrollment-form" method="POST">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <button type="button" id="start-camera">Start Camera</button>
+        <button type="submit" id="enroll" style="display:none;">Enroll</button>
+    </form>
+    <video id="video" autoplay></video>
+    <button id="capture" style="display:none;">Capture Photo</button>
+    <a href="{{ url_for('index') }}">Back</a>
+
+    <script>
+        const startCameraButton = document.getElementById('start-camera');
+        const video = document.getElementById('video');
+        const captureButton = document.getElementById('capture');
+        const enrollButton = document.getElementById('enroll');
+        let cameraStream;
+
+        startCameraButton.addEventListener('click', async () => {
+            cameraStream = await navigator.mediaDevices.getUserMedia({ video: true });
+            video.srcObject = cameraStream;
+            video.style.display = 'block';
+            startCameraButton.style.display = 'none';
+            captureButton.style.display = 'inline';
+            enrollButton.style.display = 'none'; // Hide the enroll button initially
+        });
+
+        captureButton.addEventListener('click', () => {
+            // Enable the enroll button after capturing the photo
+            enrollButton.style.display = 'inline';
+            captureButton.style.display = 'none'; // Hide capture button after capture
+            // You can add additional logic to actually take the picture here, if needed
+        });
+
+        window.addEventListener('beforeunload', () => {
+            // Stop the camera stream if the user leaves the page
+            if (cameraStream) {
+                cameraStream.getTracks().forEach(track => track.stop());
+            }
+        });
+    </script>
+</body>
+</html>

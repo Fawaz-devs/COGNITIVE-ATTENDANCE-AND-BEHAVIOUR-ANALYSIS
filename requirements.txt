@@ -1,0 +1,8 @@
+opencv-python
+face_recognition
+tensorflow
+numpy
+pandas
+Flask
+Flask-Login
+matplotlib
