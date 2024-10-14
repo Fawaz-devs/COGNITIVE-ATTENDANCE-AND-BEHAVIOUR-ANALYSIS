@@ -28,7 +28,7 @@ def run_recognition():
     known_face_encodings = list(enrolled_faces.values())
     known_face_names = list(enrolled_faces.keys())
 
-    cap = cv2.VideoCapture(1)
+    cap = cv2.VideoCapture(0)
 
     while True:
         ret, frame = cap.read()

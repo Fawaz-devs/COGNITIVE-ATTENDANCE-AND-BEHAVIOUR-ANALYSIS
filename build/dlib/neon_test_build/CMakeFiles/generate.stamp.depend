@@ -1,0 +1,25 @@
+# CMake generation dependency list for this directory.
+C:/Python312/Lib/site-packages/cmake/data/share/cmake-3.30/Modules/CMakeCInformation.cmake
+C:/Python312/Lib/site-packages/cmake/data/share/cmake-3.30/Modules/CMakeCXXInformation.cmake
+C:/Python312/Lib/site-packages/cmake/data/share/cmake-3.30/Modules/CMakeCommonLanguageInclude.cmake
+C:/Python312/Lib/site-packages/cmake/data/share/cmake-3.30/Modules/CMakeGenericSystem.cmake
+C:/Python312/Lib/site-packages/cmake/data/share/cmake-3.30/Modules/CMakeInitializeConfigs.cmake
+C:/Python312/Lib/site-packages/cmake/data/share/cmake-3.30/Modules/CMakeLanguageInformation.cmake
+C:/Python312/Lib/site-packages/cmake/data/share/cmake-3.30/Modules/CMakeRCInformation.cmake
+C:/Python312/Lib/site-packages/cmake/data/share/cmake-3.30/Modules/CMakeSystemSpecificInformation.cmake
+C:/Python312/Lib/site-packages/cmake/data/share/cmake-3.30/Modules/CMakeSystemSpecificInitialize.cmake
+C:/Python312/Lib/site-packages/cmake/data/share/cmake-3.30/Modules/Compiler/CMakeCommonCompilerMacros.cmake
+C:/Python312/Lib/site-packages/cmake/data/share/cmake-3.30/Modules/Compiler/MSVC-C.cmake
+C:/Python312/Lib/site-packages/cmake/data/share/cmake-3.30/Modules/Compiler/MSVC-CXX.cmake
+C:/Python312/Lib/site-packages/cmake/data/share/cmake-3.30/Modules/Compiler/MSVC.cmake
+C:/Python312/Lib/site-packages/cmake/data/share/cmake-3.30/Modules/Platform/Windows-Initialize.cmake
+C:/Python312/Lib/site-packages/cmake/data/share/cmake-3.30/Modules/Platform/Windows-MSVC-C.cmake
+C:/Python312/Lib/site-packages/cmake/data/share/cmake-3.30/Modules/Platform/Windows-MSVC-CXX.cmake
+C:/Python312/Lib/site-packages/cmake/data/share/cmake-3.30/Modules/Platform/Windows-MSVC.cmake
+C:/Python312/Lib/site-packages/cmake/data/share/cmake-3.30/Modules/Platform/Windows.cmake
+C:/Python312/Lib/site-packages/cmake/data/share/cmake-3.30/Modules/Platform/WindowsPaths.cmake
+C:/Users/samee/OneDrive/Desktop/MINOR PROJECT/build/CMakeFiles/3.30.3/CMakeCCompiler.cmake
+C:/Users/samee/OneDrive/Desktop/MINOR PROJECT/build/CMakeFiles/3.30.3/CMakeCXXCompiler.cmake
+C:/Users/samee/OneDrive/Desktop/MINOR PROJECT/build/CMakeFiles/3.30.3/CMakeRCCompiler.cmake
+C:/Users/samee/OneDrive/Desktop/MINOR PROJECT/build/CMakeFiles/3.30.3/CMakeSystem.cmake
+C:/Users/samee/OneDrive/Desktop/MINOR PROJECT/dlib/dlib/cmake_utils/test_for_neon/CMakeLists.txt

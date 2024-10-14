@@ -1,0 +1,8 @@
+C:/Users/samee/OneDrive/Desktop/MINOR PROJECT/build/CMakeFiles/PACKAGE.dir
+C:/Users/samee/OneDrive/Desktop/MINOR PROJECT/build/CMakeFiles/INSTALL.dir
+C:/Users/samee/OneDrive/Desktop/MINOR PROJECT/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/samee/OneDrive/Desktop/MINOR PROJECT/build/CMakeFiles/ZERO_CHECK.dir
+C:/Users/samee/OneDrive/Desktop/MINOR PROJECT/build/dlib/CMakeFiles/dlib.dir
+C:/Users/samee/OneDrive/Desktop/MINOR PROJECT/build/dlib/CMakeFiles/PACKAGE.dir
+C:/Users/samee/OneDrive/Desktop/MINOR PROJECT/build/dlib/CMakeFiles/INSTALL.dir
+C:/Users/samee/OneDrive/Desktop/MINOR PROJECT/build/dlib/CMakeFiles/ALL_BUILD.dir

@@ -4,10 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Face Recognition</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        #video_feed {
+            width: 640px;
+            height: 480px;
+            border: 1px solid #ccc;
+        }
+    </style>
 </head>
 <body>
-    <h1>Face Recognition</h1>
-    <img src="{{ url_for('video_feed') }}" style="width: 100%; height: auto;">
-    <a href="{{ url_for('index') }}">Back</a>
+    <h1>COGNITIVE ATTENDANCE WITH BEHAVIOR ANALYSIS</h1>
+    <img id="video_feed" src="{{ url_for('video_feed') }}" alt="Video Feed">
+    <br>
+    <button id="startAttendance">Start Attendance</button>
+    <button id="stopAttendance">Stop Attendance</button>
+    <p id="attendanceStatus">Attendance: Inactive</p>
+
+    <script>
+        $(document).ready(function() {
+            $('#startAttendance').click(function() {
+                $.post('/start_attendance', function(data) {
+                    $('#attendanceStatus').text('Attendance: Active');
+                });
+            });
+
+            $('#stopAttendance').click(function() {
+                $.post('/stop_attendance', function(data) {
+                    $('#attendanceStatus').text('Attendance: Inactive');
+                });
+            });
+        });
+    </script>
 </body>
 </html>

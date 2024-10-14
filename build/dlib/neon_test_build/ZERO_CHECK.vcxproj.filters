@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\samee\OneDrive\Desktop\MINOR PROJECT\build\dlib\neon_test_build\CMakeFiles\09bcbd7d314e81f5206aba40513e74d2\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{B2627F4D-F3FC-3B3A-9E48-B1A49D6A933E}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

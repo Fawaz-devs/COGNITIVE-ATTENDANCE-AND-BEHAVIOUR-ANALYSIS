@@ -88,7 +88,7 @@ def enroll():
         username = request.form['username']
         
         # Capture multiple images for enrollment
-        camera = cv2.VideoCapture(1)
+        camera = cv2.VideoCapture(0)
         face_encodings = []
         for _ in range(5):  # Capture 5 images
             success, frame = camera.read()
@@ -122,7 +122,7 @@ def logout():
 import time
 
 def generate_frames():
-    camera = cv2.VideoCapture(1)
+    camera = cv2.VideoCapture(0)
     
     # Set the frame rate to 40 FPS
     camera.set(cv2.CAP_PROP_FPS, 60)
