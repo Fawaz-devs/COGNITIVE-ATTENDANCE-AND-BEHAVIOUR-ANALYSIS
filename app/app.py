@@ -6,6 +6,8 @@ from flask import Flask, render_template, request, redirect, url_for, flash, Res
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user
 import face_recognition
 from deepface import DeepFace
+from datetime import datetime
+import sqlite3
 
 # Get the absolute path of the current file
 current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -15,6 +17,7 @@ template_folder = os.path.join(current_dir, 'templates')
 
 # Define paths for storing face data
 face_data_file = os.path.join(current_dir, 'face_data.pkl')
+database_file = os.path.join(current_dir, 'attendance.db')
 
 app = Flask(__name__, template_folder=template_folder)
 app.config['SECRET_KEY'] = '123456'
@@ -33,10 +36,12 @@ USERS = {
 known_face_encodings = []
 known_face_names = []
 
+# User class for flask-login
 class User(UserMixin):
     def __init__(self, id):
         self.id = id
 
+# Load user for flask-login
 @login_manager.user_loader
 def load_user(user_id):
     return User(user_id)
@@ -60,6 +65,28 @@ def save_face_data():
 
 # Load existing face data when the app starts
 load_face_data()
+
+# Initialize database
+def init_db():
+    conn = sqlite3.connect(database_file)
+    c = conn.cursor()
+    c.execute('''
+        CREATE TABLE IF NOT EXISTS attendance (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT,
+            emotion TEXT,
+            timestamp TEXT
+        )
+    ''')
+    conn.commit()
+    conn.close()
+
+# Call the function to initialize the database
+init_db()
+
+def get_db():
+    conn = sqlite3.connect(database_file)
+    return conn
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -134,6 +161,9 @@ def generate_frames():
     # Calculate the time to wait between frames
     frame_time = 1 / 40  # 40 FPS
 
+    # Initialize the last attendance record time
+    last_attendance_time = datetime.now()
+
     while True:
         start_time = time.time()
         
@@ -168,6 +198,17 @@ def generate_frames():
                     cv2.putText(frame, f'{name}: {emotion}', (left, top - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 0, 0), 2)
                 except Exception as e:
                     print("Error analyzing emotions:", e)
+                    emotion = "N/A"
+
+                # Record attendance every 10 seconds
+                if (datetime.now() - last_attendance_time).seconds >= 10:
+                    current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+                    with app.app_context():
+                        db = get_db()
+                        db.execute('INSERT INTO attendance (name, emotion, timestamp) VALUES (?, ?, ?)',
+                                   (name, emotion, current_time))
+                        db.commit()
+                    last_attendance_time = datetime.now()
 
                 cv2.rectangle(frame, (left, top), (right, bottom), (0, 255, 0), 2)
 
@@ -198,6 +239,14 @@ def start_recognition():
 @login_required
 def start_emotion_analysis():
     return render_template('start_emotion_analysis.html')  # Template with emotion analysis
+
+@app.route('/attendance')
+@login_required
+def attendance_page():
+    db = get_db()
+    cursor = db.execute('SELECT name, emotion, timestamp FROM attendance ORDER BY timestamp DESC')
+    attendance_records = cursor.fetchall()
+    return render_template('attendance.html', attendance_records=attendance_records)
 
 @app.route('/enrolled_faces')
 @login_required

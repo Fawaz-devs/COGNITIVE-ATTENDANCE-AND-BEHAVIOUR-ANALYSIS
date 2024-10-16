@@ -3,11 +3,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emotion Analysis</title>
+    <title>Behaviour Analysis - Cognitive Attendance System</title>
+    <style>
+        :root {
+            --primary-color: #4a90e2;
+            --text-color: #333;
+            --shadow-color: rgba(0, 0, 0, 0.2);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-image: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/students-study-in-group-learning-class-young-vector-46881655%20(1)%20(1)-fQkAAZcyuRVzAkkvAfI1fTsFHVojbu.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px var(--shadow-color);
+            text-align: center;
+            max-width: 90%;
+            width: 800px;
+            margin-top: 2rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: var(--text-color);
+            margin-bottom: 2rem;
+            line-height: 1.2;
+        }
+
+        #video-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        #video-feed {
+            border: 2px solid var(--primary-color);
+            border-radius: 10px;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 1rem 2rem;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                120deg,
+                transparent,
+                rgba(255, 255, 255, 0.3),
+                transparent
+            );
+            transition: all 0.5s;
+        }
+
+        .button:hover::before {
+            left: 100%;
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px var(--shadow-color);
+        }
+    </style>
 </head>
 <body>
-    <h1>Emotion Analysis</h1>
-    <img src="{{ url_for('video_feed') }}" style="width: 100%; height: auto;">
-    <a href="{{ url_for('index') }}">Back</a>
+    <div class="container">
+        <h1>Real-Time Behaviour Analysis</h1>
+        <div id="video-container">
+            <img id="video-feed" src="{{ url_for('video_feed') }}" alt="Video Feed">
+        </div>
+
+        <a href="{{ url_for('index') }}" class="button">Back to Home</a>
+    </div>
+
+    <script>
+        // Adjust video feed size on window resize
+        function adjustVideoSize() {
+            const videoFeed = document.getElementById('video-feed');
+            const container = document.querySelector('.container');
+            const maxWidth = container.clientWidth - 40; // 40px for padding
+            const aspectRatio = 16 / 9; // Assuming 16:9 aspect ratio
+
+            videoFeed.style.width = maxWidth + 'px';
+            videoFeed.style.height = (maxWidth / aspectRatio) + 'px';
+        }
+
+        window.addEventListener('load', adjustVideoSize);
+        window.addEventListener('resize', adjustVideoSize);
+    </script>
 </body>
 </html>
