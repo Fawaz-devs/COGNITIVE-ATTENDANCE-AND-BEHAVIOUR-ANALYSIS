@@ -10,6 +10,8 @@
             --secondary-color: #e2754a;
             --tertiary-color: #4ae275;
             --quaternary-color: #e24a75;
+            --quinary-color: #754ae2;
+            --senary-color: #e2e24a;
             --text-color: #333;
             --shadow-color: rgba(0, 0, 0, 0.2);
         }
@@ -89,6 +91,8 @@
         .button:nth-child(2) { background-color: var(--secondary-color); }
         .button:nth-child(3) { background-color: var(--tertiary-color); }
         .button:nth-child(4) { background-color: var(--quaternary-color); }
+        .button:nth-child(5) { background-color: var(--quinary-color); }
+        .button:nth-child(6) { background-color: var(--senary-color); }
 
         .button:hover {
             transform: translateY(-3px);
@@ -103,9 +107,9 @@
             <a href="{{ url_for('enroll') }}" class="button">Enroll New Face</a>
             <a href="{{ url_for('start_emotion_analysis') }}" class="button">Start Behaviour Analysis</a>
             <a href="{{ url_for('attendance_page') }}" class="button">View Attendance</a>
+            <a href="{{ url_for('enrolled_faces') }}" class="button">Manage Enrolled Faces</a>
+            <a href="{{ url_for('face_count') }}" class="button">View Face Count</a>
             <a href="{{ url_for('logout') }}" class="button">Logout</a>
-            <li><a href="{{ url_for('enrolled_faces') }}">Manage Enrolled Faces</a></li>
-            <li><a href="{{ url_for('face_count') }}">View Face Count</a></li>
         </div>
     </div>
 </body>
