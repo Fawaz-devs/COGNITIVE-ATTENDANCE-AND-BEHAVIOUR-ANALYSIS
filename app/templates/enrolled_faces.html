@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enrolled Faces</title>
+</head>
+<body>
+    <h1>Enrolled Faces</h1>
+    <ul>
+        {% for name, index in faces %}
+            <li>
+                {{ name }}
+                <a href="{{ url_for('delete_face', index=index) }}" onclick="return confirm('Are you sure you want to delete this face?');">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('index') }}">Back to Home</a>
+</body>
+</html>

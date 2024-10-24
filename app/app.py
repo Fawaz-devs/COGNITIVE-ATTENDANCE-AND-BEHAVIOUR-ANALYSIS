@@ -8,6 +8,7 @@ import face_recognition
 from deepface import DeepFace
 from datetime import datetime
 import sqlite3
+import time
 
 # Get the absolute path of the current file
 current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -146,8 +147,6 @@ def logout():
     logout_user()
     return redirect(url_for('login'))
 
-import time
-
 def generate_frames():
     camera = cv2.VideoCapture(0)
     
@@ -264,6 +263,12 @@ def delete_face(index):
     else:
         flash('Invalid face index', 'error')
     return redirect(url_for('enrolled_faces'))
+
+@app.route('/face_count')
+@login_required
+def face_count():
+    count = len(known_face_names)
+    return render_template('face_count.html', count=count, faces=known_face_names)
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Count</title>
+</head>
+<body>
+    <h1>Face Count</h1>
+    <p>Total number of enrolled faces: {{ count }}</p>
+    <h2>Enrolled Faces:</h2>
+    <ul>
+        {% for face in faces %}
+            <li>{{ face }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('index') }}">Back to Home</a>
+</body>
+</html>
