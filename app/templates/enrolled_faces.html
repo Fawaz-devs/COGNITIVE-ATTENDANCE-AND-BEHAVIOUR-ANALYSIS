@@ -3,18 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enrolled Faces</title>
+    <title>Enrolled Faces - Cognitive Attendance System</title>
+    <style>
+        :root {
+            --primary-color: #4a90e2;
+            --secondary-color: #e2754a;
+            --text-color: #333;
+            --shadow-color: rgba(0, 0, 0, 0.2);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/students-study-in-group-learning-class-young-vector-46881655%20(1)%20(1)-fQkAAZcyuRVzAkkvAfI1fTsFHVojbu.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px var(--shadow-color);
+            text-align: center;
+            max-width: 90%;
+            width: 600px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: var(--text-color);
+            margin-bottom: 2rem;
+            line-height: 1.2;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: bold;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                120deg,
+                transparent,
+                rgba(255, 255, 255, 0.3),
+                transparent
+            );
+            transition: all 0.5s;
+        }
+
+        .button:hover::before {
+            left: 100%;
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px var(--shadow-color);
+        }
+
+        .delete-button {
+            background-color: var(--secondary-color);
+        }
+
+        .back-button {
+            background-color: var(--primary-color);
+            margin-top: 2rem;
+        }
+    </style>
 </head>
 <body>
-    <h1>Enrolled Faces</h1>
-    <ul>
-        {% for name, index in faces %}
-            <li>
-                {{ name }}
-                <a href="{{ url_for('delete_face', index=index) }}" onclick="return confirm('Are you sure you want to delete this face?');">Delete</a>
-            </li>
-        {% endfor %}
-    </ul>
-    <a href="{{ url_for('index') }}">Back to Home</a>
+    <div class="container">
+        <h1>Enrolled Faces</h1>
+        <ul>
+            {% for name, index in faces %}
+                <li>
+                    <span>{{ name }}</span>
+                    <a href="{{ url_for('delete_face', index=index) }}" class="button delete-button" onclick="return confirm('Are you sure you want to delete this face?');">Delete</a>
+                </li>
+            {% endfor %}
+        </ul>
+        <a href="{{ url_for('index') }}" class="button back-button">Back to Home</a>
+    </div>
 </body>
 </html>
